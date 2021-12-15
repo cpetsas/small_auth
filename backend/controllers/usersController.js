@@ -12,12 +12,11 @@ exports.login = async (req, response, next) => {
         encrypted += cipher.final('hex')
         const user = await models.Users.findOne({ where: { email: email, password: encrypted}})
         if (user){
-            user.update({last_login: new Date()})
             var claims = {email: user.email,
                           token: user.token}
             var token = jwt.create(claims, process.env.JWT_SECRET)
             token.setExpiration(new Date().getTime() + 1000*60*60*10)
-            return response.status(200).send({idToken: token.compact()})
+            return response.status(200).json({"idToken": token.compact(), "name":user.name})
         }
         return response.status(400).json('Invalid email and pass combo')
     }
@@ -28,7 +27,7 @@ exports.login = async (req, response, next) => {
 
 exports.signup = async (req, response, next) => {
     try {
-        const {email, password} = req.body
+        const {email, password, name} = req.body
         const crypto = require('crypto')
         const algorithm = process.env.PASS_ENCRYPTION_ALGORITHM
         const key = process.env.PASS_ENCRYPTION_KEY
@@ -38,7 +37,7 @@ exports.signup = async (req, response, next) => {
         encrypted += cipher.final('hex')
         user = await models.Users.findOne({where:{email: email}})
         if(!user){
-            models.Users.create({email: email, password: encrypted, token: hash+email})
+            models.Users.create({email: email, password: encrypted, name:name, token: hash+email})
         } else {
             response.status(500).json('User alread exists')
         } 
