@@ -8,14 +8,14 @@ var index = require('./routes/index')
 var models = require('./models')
 
 models.sequelize.sync({alter: true})
-const formData = require("express-form-data");
+// const formData = require("express-form-data");
 
 let app=express()
 
-app.use(formData.parse());
-app.use(formData.format());
-app.use(formData.stream());
-app.use(formData.union());
+// app.use(formData.parse());
+// app.use(formData.format());
+// app.use(formData.stream());
+// app.use(formData.union());
 
 app.use(bodyParser.json());
 app.use(express.urlencoded());
