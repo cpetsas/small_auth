@@ -28,6 +28,18 @@ exports.login = async (req, response, next) => {
 exports.signup = async (req, response, next) => {
     try {
         const {email, password, name} = req.body
+        if (name.length < 5){
+            response.status(400).json('Name should be at least 5 characters long')
+            return
+        }
+        if (password.length < 8){
+            response.status(400).json('Password should be at least 8 characters long') 
+            return
+        }
+        if (!/\d/.test(password)){
+            response.status(400).json('Password should contain at least 1 number') 
+            return
+        }
         const crypto = require('crypto')
         const algorithm = process.env.PASS_ENCRYPTION_ALGORITHM
         const key = process.env.PASS_ENCRYPTION_KEY
