@@ -51,7 +51,7 @@ exports.signup = async (req, response, next) => {
         if(!user){
             models.Users.create({email: email, password: encrypted, name:name, token: hash+email})
         } else {
-            response.status(500).json('User alread exists')
+            response.status(500).json('User already exists')
         } 
         response.status(200).json('User created')
     } catch(e){

@@ -5,7 +5,6 @@ import TextField from '@mui/material/TextField';
 function LogIn(props){
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [fullName, setFullName] = useState('')
     const [status, setStatus] = useState('')
 
     useEffect(()=>{
