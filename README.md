@@ -17,7 +17,7 @@ Sometimes the nodemon package fails to install, if that happens run:
 ```sh
     npm install -g nodemon
 ```
-###Frontend
+### Frontend
 Navigate in the frontend/auth directory and install dependencies with npm:
 ```sh
     npm install
