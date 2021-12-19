@@ -7,7 +7,7 @@ Developed in Ubuntu 20.04 with WSL1
 - Postgresql
 
 ## Project Dependencies
-###Backend
+### Backend
 
 Navigate in the backend directory and install dependencies with npm:
 ```sh
@@ -23,7 +23,7 @@ Navigate in the frontend/auth directory and install dependencies with npm:
     npm install
 ```
 
-###Testing
+### Testing
 Navigate to backend/testing and then:
 - Create a venv by running:
 ```sh
