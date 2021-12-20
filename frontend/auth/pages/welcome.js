@@ -13,8 +13,8 @@ function Welcome(props){
 
     return(
         <>
-            <h1> Welcome <span onClick={handleLogout}>{props.fullName}</span>
-                . To logout click on your name.</h1>
+            <h1> Welcome {props.fullName}
+                . To logout click <a onClick={handleLogout}> here.</a></h1>
                 <Button color="primary" variant="contained" onClick={handleLogout}>
                     Logout
                 </Button>
